@@ -1,0 +1,67 @@
+.wrapper {
+  position: relative;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.container {
+  position: relative;
+  height: auto;
+  width: auto;
+
+  border: 1px solid var(--lightBlue);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dropBtn {
+  background-color: white;
+  display: flex;
+  width: 200px;
+  height: 40px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.option {
+  display: block;
+}
+
+.option div {
+  background-color: white;
+  display: flex;
+  width: 200px;
+  height: 35px;
+  padding-left: 15px;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.option div:hover {
+  background-color: var(--lightBorderColor);
+}
+
+@media screen and (max-width: 1024px) {
+  .dropBtn {
+    width: 150px;
+  }
+
+  .option div {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dropBtn {
+    width: 120px;
+  }
+
+  .option div {
+    width: 120px;
+  }
+}

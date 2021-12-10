@@ -7,12 +7,14 @@ import Modal from "../../components/UI/Modal/AddJournalModal";
 import mongoose from "mongoose";
 import Journal from "../../models/accounting/Journal";
 import { useUpdateState } from "../../context/AppContext";
-import { sortJournals } from "../../utilities/helper";
+import { sortJournals } from "../../utilities/algorithm_helper";
 import Loader from "../../components/UI/Loader/Loader";
+import { useRouter } from "next/router";
 
 const Home = (props) => {
   const { setJournalOnFetch } = useUpdateState();
   const { journalArray } = useGetState();
+  const router = useRouter();
 
   const [journalArrayOk, setJournalArrayOk] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -38,9 +40,11 @@ const Home = (props) => {
       <h3 className={classes.title}>Transaction Journals By Month</h3>
       <div className={classes.cardsContainer}>
         <Card add onClick={addMonth} />
-        {journalArray.map((item, index) => (
-          <Card data={item} key={index} />
-        ))}
+        {journalArray.map((item, index) => {
+          const cardClicked = () =>
+            router.push(`/accounting/journal/${item.journalID}`);
+          return <Card data={item} key={index} onClick={cardClicked} />;
+        })}
       </div>
       {loading && <Loader />}
       <BackDrop show={modalOpen} closeModal={closeModal} />

@@ -1,0 +1,9 @@
+.container {
+  position: relative;
+}
+
+.detailContainer {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  margin: 0px 25px;
+}

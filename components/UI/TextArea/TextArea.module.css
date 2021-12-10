@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.textArea {
+  resize: none;
+  font-family: sans-serif;
+  background-color: var(--faded);
+
+  border: 1px solid var(--lightGrey);
+  border-radius: 2.5px;
+
+  font-size: 0.9rem;
+  padding: 9px 12px;
+}
+
+.textArea:focus {
+  box-shadow: 0 0 10px #719ece;
+  border-color: black;
+}

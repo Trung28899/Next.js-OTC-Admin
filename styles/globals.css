@@ -17,7 +17,24 @@ a {
 :root {
   --lightBlue: #81c4ff;
   --lightBorderColor: rgb(228, 228, 228);
-  --primary: #0275d8;
   --lightGrey: rgb(185, 185, 185);
   --black: #282828;
+  --dangerLight: #eccdcb;
+
+  --primary: #0275d8;
+  --danger: #d9534f;
+  --info: #5bc0de;
+  --success: #5cb85c;
+  --warning: #f0ad4e;
+  --inverse: #292b2c;
+  --faded: #f7f7f7;
+
+  --successLight: #bef8be;
+  --successDark: #008100;
+
+  --dangerLight: #ffc9c7;
+  --dangerDark: #9c0500;
+
+  --primaryLight: #bbdfff;
+  --primaryDark: #0159a7;
 }

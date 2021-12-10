@@ -19,7 +19,6 @@
 .dropBtn {
   background-color: white;
   display: flex;
-  width: 200px;
   height: 40px;
   align-items: center;
   justify-content: flex-start;
@@ -34,7 +33,6 @@
 .option div {
   background-color: white;
   display: flex;
-  width: 200px;
   height: 35px;
   padding-left: 15px;
   align-items: center;

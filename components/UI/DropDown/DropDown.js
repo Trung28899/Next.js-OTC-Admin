@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import classes from "./DropDown.module.css";
 
-export default function DropDown({ optionName, options, setChosen }) {
+export default function DropDown(props) {
+  const { optionName, options, setChosen } = props;
+  const { fontSize, width } = props;
+
   const [openDrop, setOpenDrop] = useState(false);
   const [chosenOption, setChosenOption] = useState("");
 
@@ -13,17 +16,42 @@ export default function DropDown({ optionName, options, setChosen }) {
     setOpenDrop(false);
   };
 
+  const titleObject = {};
+  const optionStyle = {};
+  const dropBtnStyle = {};
+
+  if (fontSize) {
+    titleObject.fontSize = fontSize;
+    optionStyle.fontSize = fontSize;
+    dropBtnStyle.fontSize = fontSize;
+  }
+
+  if (width) {
+    dropBtnStyle.width = width;
+    optionStyle.width = width;
+  }
+
   return (
     <div className={classes.wrapper}>
-      <h3 className={classes.title}>{optionName}</h3>
+      <h3 style={titleObject} className={classes.title}>
+        {optionName}
+      </h3>
       <div className={classes.container}>
-        <div onClick={toggleDrop} className={classes.dropBtn}>
-          {chosenOption || optionName}
+        <div
+          style={dropBtnStyle}
+          onClick={toggleDrop}
+          className={classes.dropBtn}
+        >
+          {chosenOption || "Choose"}
         </div>
         {openDrop && (
           <div className={classes.option}>
             {options.map((item) => (
-              <div key={item} onClick={() => optionChosen(item)}>
+              <div
+                style={optionStyle}
+                key={item}
+                onClick={() => optionChosen(item)}
+              >
                 {item}
               </div>
             ))}

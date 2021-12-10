@@ -1,0 +1,17 @@
+.summaryInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+
+.titleContainer {
+  position: relative;
+  width: 375px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 0px;
+}

@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+  width: fit-content;
+  margin: 25px auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 50px;
+
+  border: 1px solid var(--lightGrey);
+  border-radius: 20px;
+}
+
+.redBorder {
+  border: 1px solid var(--dangerLight);
+}
+
+.alignStart {
+  align-items: flex-start !important;
+}
+
+.infoBorder {
+  border: 1px solid var(--info);
+}

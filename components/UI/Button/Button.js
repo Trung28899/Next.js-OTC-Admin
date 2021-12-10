@@ -6,17 +6,9 @@ const Button = (props) => {
   const { onClick } = props;
   const btnClasses = [classes.button];
 
-  if (blue) {
-    btnClasses.push(classes.blue);
-  }
-
-  if (black) {
-    btnClasses.push(classes.black);
-  }
-
-  if (glow) {
-    btnClasses.push(classes.glow);
-  }
+  if (blue) btnClasses.push(classes.blue);
+  if (black) btnClasses.push(classes.black);
+  if (glow) btnClasses.push(classes.glow);
 
   return (
     <button onClick={onClick} className={btnClasses.join(" ")}>

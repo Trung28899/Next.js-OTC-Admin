@@ -39,3 +39,8 @@ export const yearArray = [
   "2029",
   "2030",
 ];
+
+export const sortJournals = (journalArray) => {
+  journalArray.sort((a, b) => b.journalID - a.journalID);
+  return journalArray;
+};

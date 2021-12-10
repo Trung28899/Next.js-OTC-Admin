@@ -4,9 +4,10 @@ import DropDown from "../DropDown/DropDown";
 import { monthArray, yearArray } from "../../../utilities/helper";
 import Button from "../Button/Button";
 import { useUpdateState } from "../../../context/AppContext";
+import { addJournalAxios } from "../../../utilities/api_helper/api_helper";
 
 export default function Modal(props) {
-  const { show } = props;
+  const { show, setLoad } = props;
   const { addJournal } = useUpdateState();
   const [monthChosen, setMonthChosen] = useState("");
   const [yearChosen, setYearChosen] = useState("");
@@ -22,12 +23,26 @@ export default function Modal(props) {
     setYearChosen("");
   };
 
-  const addJournalHandler = () => {
-    if (!monthChosen || !yearChosen) {
+  const addJournalHandler = async () => {
+    if (!monthChosen || !yearChosen)
       return alert("Please Choose Month And Year For Journal");
+
+    setLoad(true);
+    closeModal();
+    const journalObject = {
+      name: `${monthChosen}, ${yearChosen}`,
+      journalID: Date.now(),
+    };
+
+    const res = await addJournalAxios(journalObject);
+
+    if (!res.success) {
+      setLoad(false);
+      return alert(`Error Happened: ${res.message}`);
     }
-    addJournal({ name: `${monthChosen}, ${yearChosen}` });
-    return closeModal();
+
+    addJournal(journalObject);
+    return setLoad(false);
   };
 
   return (

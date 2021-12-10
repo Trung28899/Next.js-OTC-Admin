@@ -28,3 +28,30 @@
         Go to Settings again > search for "Format On Save" > check the check box
 
         => Then code will be formatted on save
+
+    b. Fetching Data in getServerSideProps(), getStaticProps() or getStaticPaths():
+        - Cannot make a call requet to the api route because these functions
+            run on the server itself
+        - Will have to connect to database and fetch the data like a server code
+        - We can also make a request to an outside api, but not internally
+
+        See getServerSideProps() in ./pages/accounting/home
+
+    c. Props Data  from getServerSideProps():
+        - Props Data from getServerSideProps has to be stringify then parsed in
+            the actual components. Otherwise, there will be error message
+
+        See getServerSideProps() in ./pages/accounting/home
+
+    d. Error: Cannot overwrite model once compiled
+        - Same error as this link:
+            https://stackoverflow.com/questions/62440264/mongoose-nextjs-model-is-not-defined-cannot-overwrite-model-once-compiled
+
+        - Solution:
+            See ./models/accounting/Journal.js
+
+        - Explain solution:
+            if the model is existed, when the site rebuild, we don't define
+                a new model with all the same schema
+            This issue happened due to next.js re-build model when it got
+                reload after a file is saved

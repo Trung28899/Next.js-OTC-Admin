@@ -20,8 +20,15 @@ export function AppProvider({ children }) {
     setJournalArray([journalItem].concat(journalArray));
   };
 
+  const setJournalOnFetch = (journalArr) => {
+    setJournalArray(journalArr);
+  };
+
   const stateData = { journalArray: journalArray };
-  const updateState = { addJournal: addJournal };
+  const updateState = {
+    addJournal: addJournal,
+    setJournalOnFetch: setJournalOnFetch,
+  };
 
   return (
     <AppContext.Provider value={stateData}>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./AddTransaction.module.css";
 
 import AreaBorder from "../../../components/UI/AreaBorder/AreaBorder";
 import Title from "../../../components/UI/Typography/Title";
@@ -9,10 +10,9 @@ import Button from "../../../components/UI/Button/Button";
 import { transactionType, dayInMonth } from "../../../utilities/helper";
 import { departments } from "../../../utilities/helper";
 
-import classes from "./AddTransaction.module.css";
-
-const AddTransactionContain = ({ data }) => {
-  const { name, journalID } = data;
+const AddTransactionContain = (props) => {
+  const { name, journalID } = props.data;
+  const { buttonClicked } = props;
 
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(null);
@@ -21,6 +21,17 @@ const AddTransactionContain = ({ data }) => {
   const [transType, setTransType] = useState("");
   const [department, setDepartment] = useState("");
   const [date, setDate] = useState("");
+
+  const addTrans = () =>
+    buttonClicked({
+      description,
+      amount,
+      invoice,
+      transType,
+      department,
+      date,
+      name,
+    });
 
   return (
     <AreaBorder alignStart>
@@ -98,7 +109,7 @@ const AddTransactionContain = ({ data }) => {
       />
 
       <div className={classes.btnContainer}>
-        <Button glow black>
+        <Button glow black onClick={addTrans}>
           Add Transaction
         </Button>
       </div>

@@ -7,7 +7,7 @@ import SummaryReport from "../../../container/Accounting/Journal/SummaryReport";
 import Transactionlist from "../../../container/Accounting/Journal/TransactionList";
 
 const Id = (props) => {
-  const { name } = JSON.parse(props.journalDetails);
+  const { name, journalID } = JSON.parse(props.journalDetails);
 
   return (
     <div className={classes.container}>
@@ -15,7 +15,7 @@ const Id = (props) => {
         {name}: Transactions Journal
       </Title>
       <div className={classes.detailContainer}>
-        <Transactionlist />
+        <Transactionlist journalID={journalID} />
         <SummaryReport />
       </div>
     </div>

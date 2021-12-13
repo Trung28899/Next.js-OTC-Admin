@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import mongoose from "mongoose";
 import Journal from "../../../../models/accounting/Journal";
 import AddTransactionContain from "./../../../../container/Accounting/AddTransaction/AddTransaction";
+import Loader from "../../../../components/UI/Loader/Loader";
+
+import { validateAddTrans } from "../../../../utilities/validator";
 
 const AddTransaction = (props) => {
+  const propsData = JSON.parse(props.journalDetails);
+  const [loading, setLoading] = useState(false);
+
+  const addTransaction = (data) => {
+    setLoading(true);
+    const errorText = validateAddTrans(data);
+    if (errorText) return alert(errorText);
+
+    setLoading(false);
+  };
+
   return (
     <div>
-      <AddTransactionContain data={JSON.parse(props.journalDetails)} />
+      <AddTransactionContain data={propsData} buttonClicked={addTransaction} />
+      {loading && <Loader />}
     </div>
   );
 };

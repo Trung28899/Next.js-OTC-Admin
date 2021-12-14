@@ -9,4 +9,13 @@ const addJournalAxios = async (journalObject) => {
   return res.data;
 };
 
-export { addJournalAxios };
+// Used in AddJournalModal.js
+const addTransAxios = async (data) => {
+  const res = await axios.post("/api/accounting/addTrans", {
+    transData: data,
+  });
+
+  return res.data;
+};
+
+export { addJournalAxios, addTransAxios };

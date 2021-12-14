@@ -1,6 +1,6 @@
 import { Colors } from "../constants/colors";
 
-export const getColorByNumber = (number) => {
+const getColorByNumber = (number) => {
   if (number % 2 === 0) {
     return Colors.primary;
   } else if (number % 3 === 0) {
@@ -12,7 +12,7 @@ export const getColorByNumber = (number) => {
   }
 };
 
-export const monthArray = [
+const monthArray = [
   "January",
   "February",
   "March",
@@ -27,7 +27,7 @@ export const monthArray = [
   "December",
 ];
 
-export const yearArray = [
+const yearArray = [
   "2021",
   "2022",
   "2023",
@@ -40,9 +40,9 @@ export const yearArray = [
   "2030",
 ];
 
-export const transactionType = ["Income", "Expense"];
+const transactionType = ["Income", "Expense"];
 
-export const dayInMonth = [
+const dayInMonth = [
   "1st",
   "2nd",
   "3rd",
@@ -76,7 +76,7 @@ export const dayInMonth = [
   "31st",
 ];
 
-export const departments = [
+const departments = [
   "Sales",
   "Fulfilment",
   "Logistic",
@@ -87,3 +87,6 @@ export const departments = [
   "Finance",
   "Human Resource",
 ];
+
+export { getColorByNumber, monthArray, yearArray };
+export { transactionType, dayInMonth, departments };

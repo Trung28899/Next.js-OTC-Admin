@@ -19,6 +19,7 @@ const transactionSchema = mongoose.Schema({
   isDeleted: { type: Boolean, default: false },
   journalName: { type: String, default: "" },
   journalID: { type: Number, default: 0 },
+  transID: { type: Number, default: 0 },
 });
 
 const Transaction =

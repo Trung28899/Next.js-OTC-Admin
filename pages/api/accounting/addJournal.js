@@ -12,6 +12,8 @@ export default async function handler(req, res) {
 
     const newJournalReport = new Journal({
       name: newJournal.name,
+      month: newJournal.month,
+      year: newJournal.year,
       journalID: newJournal.journalID,
     });
 

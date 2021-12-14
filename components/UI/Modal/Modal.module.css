@@ -48,6 +48,14 @@
   margin-top: 25px;
 }
 
+.greenText {
+  color: var(--successDark);
+}
+
+.redText {
+  color: var(--danger);
+}
+
 @media screen and (min-width: 1800px) {
   .Button {
     font-size: 1.25rem;

@@ -29,12 +29,18 @@ a {
   --inverse: #292b2c;
   --faded: #f7f7f7;
 
-  --successLight: #bef8be;
+  --successLight: #cefcce;
   --successDark: #008100;
 
   --dangerLight: #ffc9c7;
+  --dangerBetween: #ffa5a2;
   --dangerDark: #9c0500;
 
   --primaryLight: #bbdfff;
   --primaryDark: #0159a7;
+
+  --fadedDark: #e2e2e2;
+
+  --warningLight: #ffe4bb;
+  --warningDark: #cf7c00;
 }

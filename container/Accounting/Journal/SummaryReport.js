@@ -26,7 +26,7 @@ const SummaryReport = () => {
         </div>
 
         <div className={classes.summaryInfo}>
-          <Badge bgInfo>Revenue</Badge>
+          <Badge bgInfo>Profit</Badge>
           <Paragraph bold primary>
             $1500
           </Paragraph>

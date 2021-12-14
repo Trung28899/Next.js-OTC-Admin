@@ -31,6 +31,8 @@ export default function Modal(props) {
     closeModal();
     const journalObject = {
       name: `${monthChosen}, ${yearChosen}`,
+      month: monthChosen,
+      year: yearChosen,
       journalID: Date.now(),
     };
 

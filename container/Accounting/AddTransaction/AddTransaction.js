@@ -31,6 +31,8 @@ const AddTransactionContain = (props) => {
       department,
       date,
       name,
+      notes,
+      journalID,
     });
 
   return (

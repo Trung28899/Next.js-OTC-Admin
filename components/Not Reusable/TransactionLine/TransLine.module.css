@@ -19,6 +19,7 @@
 .date {
   font-size: 0.85rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .description {
@@ -33,6 +34,7 @@
 .type {
   font-size: 0.8rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .amount {

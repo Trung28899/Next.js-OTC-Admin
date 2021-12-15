@@ -1,4 +1,4 @@
-import { dayInMonth } from "./helper";
+import { dayInMonth, monthArray } from "./helper";
 
 // sort transactions by date, used in ./pages/accounting/journal/[id].js
 const sortTransaction = (transArray) => {
@@ -24,4 +24,35 @@ const getMonthShort = (month) => {
   return "";
 };
 
+// Used in ./container/Accounting/Journal/SummaryReport.js
+const getTotalIncome = (transList) => {
+  let income = 0;
+  transList.map((item) => {
+    if (item.transType === "Income") income = income + item.amount;
+  });
+
+  return income;
+};
+
+const getTotalExpense = (transList) => {
+  let expense = 0;
+  transList.map((item) => {
+    if (item.transType === "Expense") expense = expense + item.amount;
+  });
+
+  return expense;
+};
+
+// Used in container/Accounting/TransDetail/TransDetails.js
+const getDateByMillisecond = (millisecond) => {
+  const entryDate = new Date(millisecond);
+
+  return {
+    date: dayInMonth[entryDate.getDate() - 1],
+    month: monthArray[entryDate.getMonth()],
+    year: entryDate.getFullYear(),
+  };
+};
+
 export { sortTransaction, getMonthShort };
+export { getTotalIncome, getTotalExpense, getDateByMillisecond };

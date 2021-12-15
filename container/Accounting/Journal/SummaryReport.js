@@ -5,7 +5,13 @@ import Title from "../../../components/UI/Typography/Title";
 import Badge from "../../../components/UI/Typography/Badge";
 import Paragraph from "../../../components/UI/Typography/Paragraph";
 
-const SummaryReport = () => {
+import { getTotalIncome, getTotalExpense } from "../../../utilities/helper2";
+
+const SummaryReport = (props) => {
+  const { transList } = props;
+  const totalIncome = getTotalIncome(transList);
+  const totalExpense = getTotalExpense(transList);
+
   return (
     <div style={{ height: "fit-content" }}>
       <AreaBorder alignStart>
@@ -14,21 +20,21 @@ const SummaryReport = () => {
         <div className={classes.summaryInfo}>
           <Badge bgSuccess>Income</Badge>
           <Paragraph bold success>
-            $3000
+            $ {totalIncome}
           </Paragraph>
         </div>
 
         <div className={classes.summaryInfo}>
           <Badge bgDanger>Expense</Badge>
           <Paragraph bold danger>
-            - $1500
+            - $ {totalExpense}
           </Paragraph>
         </div>
 
         <div className={classes.summaryInfo}>
           <Badge bgInfo>Profit</Badge>
           <Paragraph bold primary>
-            $1500
+            {totalIncome - totalExpense} $
           </Paragraph>
         </div>
       </AreaBorder>

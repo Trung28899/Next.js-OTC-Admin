@@ -13,7 +13,8 @@ import { useRouter } from "next/router";
 
 const Home = (props) => {
   const { setJournalOnFetch } = useUpdateState();
-  const { journalArray } = useGetState();
+  const { accountingData } = useGetState();
+  const { journalArray } = accountingData;
   const router = useRouter();
 
   const [journalArrayOk, setJournalArrayOk] = useState(false);

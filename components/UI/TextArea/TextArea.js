@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./TextArea.module.css";
 
 const Textarea = (props) => {
-  const { value, title, rows, cols, setValue } = props;
+  const { value, title, rows, cols, setValue, editOff } = props;
   const { marginTop, marginBottom, marginRight, marginLeft } = props;
   const { placeHolder, isNumber } = props;
 
@@ -39,6 +39,7 @@ const Textarea = (props) => {
         value={value || ""}
         placeholder={placeHolder}
         type="number"
+        readOnly={editOff}
       />
     </div>
   );

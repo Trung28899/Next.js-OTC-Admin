@@ -18,4 +18,13 @@ const addTransAxios = async (data) => {
   return res.data;
 };
 
-export { addJournalAxios, addTransAxios };
+// Used in accounting/transaction/details/[transID].js
+const updateTransAxios = async (data) => {
+  const res = await axios.post("/api/accounting/updateTrans", {
+    transData: data,
+  });
+
+  return res.data;
+};
+
+export { addJournalAxios, addTransAxios, updateTransAxios };

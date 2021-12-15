@@ -32,6 +32,11 @@
   color: white;
 }
 
+.warning {
+  background-color: var(--warningLight);
+  color: var(--warningDark);
+}
+
 .button:hover {
   opacity: 0.75;
 }

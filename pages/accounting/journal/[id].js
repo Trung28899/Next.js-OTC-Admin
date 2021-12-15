@@ -7,20 +7,30 @@ import Transactionlist from "../../../container/Accounting/Journal/TransactionLi
 
 import Journal from "../../../models/accounting/Journal";
 import Transaction from "../../../models/accounting/Transaction";
+import Button from "../../../components/UI/Button/Button";
 
 import { sortTransaction, getMonthShort } from "../../../utilities/helper2";
+import { useRouter } from "next/router";
 
 const Id = (props) => {
+  const router = useRouter();
   const { name, journalID, month, year } = JSON.parse(props.journalDetails);
   const transList = JSON.parse(props.transactionList);
   sortTransaction(transList);
   const monthShort = getMonthShort(month);
+
+  const returnToHome = () => router.push("/accounting/home");
 
   return (
     <div className={classes.container}>
       <Title marginTop="50px" fontSize="1.25rem">
         {name}: Transactions Journal
       </Title>
+      <div className={classes.btnHome}>
+        <Button black onClick={returnToHome}>
+          Return To Home
+        </Button>
+      </div>
       <div className={classes.detailContainer}>
         <Transactionlist
           month={monthShort}
@@ -28,7 +38,7 @@ const Id = (props) => {
           journalID={journalID}
           transList={transList}
         />
-        <SummaryReport />
+        <SummaryReport transList={transList} />
       </div>
     </div>
   );

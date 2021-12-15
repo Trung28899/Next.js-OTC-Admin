@@ -2,12 +2,11 @@ import mongoose from "mongoose";
 import Journal from "../../../models/accounting/Journal";
 
 export default async function handler(req, res) {
-  const { newJournal } = req.body;
-
   if (req.method !== "POST")
     return res.json({ success: false, message: "Invalid Request !!" });
 
   try {
+    const { newJournal } = req.body;
     const client = await mongoose.connect(process.env.DB_HOST);
 
     const newJournalReport = new Journal({

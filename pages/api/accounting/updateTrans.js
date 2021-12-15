@@ -6,23 +6,23 @@ export default async function handler(req, res) {
     return res.json({ success: false, message: "Invalid Request !!" });
 
   try {
-    const { transData } = req.body;
+    const { description, amount, invoice, transType } = req.body.transData;
+    const { department, date, notes, transID } = req.body.transData;
     const client = await mongoose.connect(process.env.DB_HOST);
 
-    const newTrans = new Transaction({
-      description: transData.description,
-      amount: parseInt(transData.amount),
-      invoice: transData.invoice,
-      transType: transData.transType,
-      department: transData.department,
-      date: transData.date,
-      notes: transData.notes,
-      journalName: transData.name,
-      journalID: transData.journalID,
-      transID: Date.now(),
-    });
-
-    await newTrans.save();
+    await Transaction.findOneAndUpdate(
+      { transID: transID },
+      {
+        description: description,
+        amount: amount,
+        invoice: invoice,
+        transType: transType,
+        department: department,
+        date: date,
+        notes: notes,
+      },
+      { new: true, useFindAndModify: false }
+    );
 
     client.connection.close();
     return res.json({ success: true, message: "" });

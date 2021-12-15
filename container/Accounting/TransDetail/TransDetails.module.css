@@ -1,0 +1,17 @@
+.transType {
+  display: flex;
+  flex-direction: row;
+  width: 320px !important;
+  padding-left: 0px !important;
+  margin-left: 0px !important;
+}
+
+.btnContainer {
+  position: relative;
+  margin: 0px auto;
+  margin-top: 25px;
+}
+
+.divider {
+  width: 15px;
+}

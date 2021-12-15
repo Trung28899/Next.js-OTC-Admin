@@ -3,10 +3,10 @@ import classes from "./DropDown.module.css";
 
 export default function DropDown(props) {
   const { optionName, options, setChosen } = props;
-  const { fontSize, width } = props;
+  const { fontSize, width, value } = props;
 
   const [openDrop, setOpenDrop] = useState(false);
-  const [chosenOption, setChosenOption] = useState("");
+  const [chosenOption, setChosenOption] = useState(value || "");
 
   const toggleDrop = () => setOpenDrop(!openDrop);
 

@@ -15,6 +15,7 @@ export function useUpdateState() {
 
 export function AppProvider({ children }) {
   const [journalArray, setJournalArray] = useState([]);
+  const [transData, setTransData] = useState({});
 
   const addJournal = (journalItem) => {
     setJournalArray([journalItem].concat(journalArray));
@@ -24,10 +25,13 @@ export function AppProvider({ children }) {
     setJournalArray(journalArr);
   };
 
-  const stateData = { journalArray: journalArray };
+  const stateData = {
+    accountingData: { journalArray: journalArray, transData: transData },
+  };
   const updateState = {
     addJournal: addJournal,
     setJournalOnFetch: setJournalOnFetch,
+    setTransData: setTransData,
   };
 
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Modal.module.css";
 import Button from "../Button/Button";
 
-const ConfirmModal = (props) => {
+const ResultModal = (props) => {
   const { success, message, confirm, close, confirmText } = props;
   const textClasses = [classes.title];
 
@@ -28,4 +28,4 @@ const ConfirmModal = (props) => {
   );
 };
 
-export default ConfirmModal;
+export default ResultModal;

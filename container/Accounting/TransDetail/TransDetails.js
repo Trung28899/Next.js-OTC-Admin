@@ -12,13 +12,9 @@ import { transactionType, dayInMonth } from "../../../utilities/helper";
 import { departments } from "../../../utilities/helper";
 import { getDateByMillisecond } from "../../../utilities/helper2";
 
-import { useRouter } from "next/router";
-
 const TransDetails = (props) => {
   const { data, btnClicked, btn2Clicked } = props;
   const { updateDetails } = props;
-
-  const router = useRouter();
 
   const [description, setDescription] = useState(data.description);
   const [amount, setAmount] = useState(data.amount);
@@ -48,7 +44,14 @@ const TransDetails = (props) => {
 
   return (
     <AreaBorder alignStart>
-      <Title marginLeft="75px">Transaction Details</Title>
+      <div className={classes.titleContainer}>
+        <Title>Transaction Details</Title>
+        {data.isDeleted && (
+          <Badge marginTop="5px" fontSize="0.85rem" bgDanger>
+            Deleted Transaction
+          </Badge>
+        )}
+      </div>
 
       <TextArea
         marginTop="30px"

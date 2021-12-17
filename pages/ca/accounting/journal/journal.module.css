@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+}
+
+.detailContainer {
+  display: grid;
+  grid-template-columns: 72.5% 20%;
+  margin: 0px 25px;
+}
+
+.deleteContainer {
+  display: grid;
+  grid-template-columns: 100%;
+  margin: 0px 25px;
+}
+
+.btnHome {
+  position: relative;
+  margin: 0px auto;
+  margin-top: 25px;
+  text-align: center;
+}
+
+@media screen and (max-width: 1300px) {
+  .detailContainer {
+    grid-template-columns: 100%;
+  }
+}

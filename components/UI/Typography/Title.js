@@ -4,7 +4,7 @@ import classes from "./Typography.module.css";
 const Title = (props) => {
   const { children, marginTop, fontSize } = props;
   const { marginBottom, marginRight, marginLeft } = props;
-  const { primary } = props;
+  const { primary, white, danger } = props;
 
   const styleObject = {};
   const styleClass = [classes.title];
@@ -16,6 +16,8 @@ const Title = (props) => {
   if (fontSize) styleObject.fontSize = fontSize;
 
   if (primary) styleClass.push(classes.primary);
+  if (white) styleClass.push(classes.white);
+  if (danger) styleClass.push(classes.danger);
 
   return (
     <h3 style={styleObject} className={styleClass.join(" ")}>

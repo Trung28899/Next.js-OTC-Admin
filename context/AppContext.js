@@ -16,6 +16,9 @@ export function useUpdateState() {
 export function AppProvider({ children }) {
   const [journalArray, setJournalArray] = useState([]);
   const [transData, setTransData] = useState({});
+  const [userName, setUserName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const addJournal = (journalItem) => {
     setJournalArray([journalItem].concat(journalArray));
@@ -26,12 +29,20 @@ export function AppProvider({ children }) {
   };
 
   const stateData = {
+    isLoggedIn: isLoggedIn,
     accountingData: { journalArray: journalArray, transData: transData },
+    admin: { userName: userName, fullName: fullName },
   };
+
   const updateState = {
     addJournal: addJournal,
     setJournalOnFetch: setJournalOnFetch,
     setTransData: setTransData,
+    admin: {
+      setUserName: setUserName,
+      setFullName: setFullName,
+      setIsLoggedIn: setIsLoggedIn,
+    },
   };
 
   return (

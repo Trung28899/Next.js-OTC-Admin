@@ -15,3 +15,8 @@
 .divider {
   width: 15px;
 }
+
+.titleContainer {
+  position: relative;
+  margin: 0px auto;
+}

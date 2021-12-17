@@ -1,0 +1,34 @@
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.cardsContainer {
+  position: relative;
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 50px auto;
+  margin-top: 25px;
+}
+
+.btnHome {
+  position: relative;
+  margin: 0px auto;
+  margin-top: 25px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

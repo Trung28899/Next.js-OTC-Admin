@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import TransDetails from "../../../../container/Accounting/TransDetail/TransDetails";
+import TransDetails from "/container/Accounting/TransDetail/TransDetails";
 import { useRouter } from "next/router";
-import { useGetState } from "../../../../context/AppContext";
-import { updateTransAxios } from "../../../../utilities/api_helper/api_helper";
-import { validateUpdateTrans } from "../../../../utilities/validator";
+import { useGetState } from "/context/AppContext";
+import { updateTransAxios } from "/utilities/api_helper/api_helper";
+import { validateUpdateTrans } from "/utilities/validator";
 
-import ConfirmModal from "../../../../components/UI/Modal/ResultModal";
-import BackDrop from "../../../../components/UI/BackDrop/BackDrop";
-import Loader from "../../../../components/UI/Loader/Loader";
+import ResultModal from "/components/UI/Modal/ResultModal";
+import BackDrop from "/components/UI/BackDrop/BackDrop";
+import Loader from "/components/UI/Loader/Loader";
 
 const TransID = () => {
   const { accountingData } = useGetState();
@@ -21,7 +21,7 @@ const TransID = () => {
   const data = accountingData.transData;
 
   const returnToJournal = () =>
-    router.push(`/accounting/journal/${data.journalID}`);
+    router.push(`/ca/accounting/journal/${data.journalID}`);
 
   const viewInvoice = (invoiceLink) => {
     if (invoiceLink.includes("http")) return window.open(invoiceLink);
@@ -54,7 +54,7 @@ const TransID = () => {
       />
       {loading && <Loader />}
       {showResult && (
-        <ConfirmModal
+        <ResultModal
           confirm={close}
           success={success}
           message={message}

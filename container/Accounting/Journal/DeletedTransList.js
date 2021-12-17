@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import AreaBorder from "/components/UI/AreaBorder/AreaBorder";
 import Title from "/components/UI/Typography/Title";
-import Button from "/components/UI/Button/Button";
 import classes from "./JournalContainer.module.css";
 import { useRouter } from "next/router";
 
@@ -22,8 +21,6 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
   const [resultConfirm, setResultConfirm] = useState(false);
 
   const router = useRouter();
-  const addTrans = () =>
-    router.push(`/ca/accounting/transaction/add/${journalID}`);
 
   const deleteTrans = (data) => {
     setTransData(data);
@@ -35,14 +32,15 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
     setDeleteOn(false);
   };
 
-  const deleteConfirm = async () => {
+  const restoreConfirm = async () => {
     setDeleteOn(false);
     setLoading(true);
 
-    const result = await deleteTransAxios(transData, true);
+    const result = await deleteTransAxios(transData, false);
 
     setDeleteSuccess(result.success);
-    if (result.success) setDeleteMessage("Transaction Delete Successfully !!");
+    if (result.success)
+      setDeleteMessage("Transaction Restored Successfully !!");
     if (!result.success) setDeleteMessage(result.message);
 
     setTransData(null);
@@ -62,13 +60,13 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
   return (
     <Fragment>
       <AreaBorder>
-        <div className={classes.titleContainer}>
-          <Title fontSize="1.1rem" primary>
-            Transactions Listing
+        <div
+          style={{ justifyContent: "center" }}
+          className={classes.titleContainer}
+        >
+          <Title fontSize="1.1rem" danger>
+            Deleted Transactions
           </Title>
-          <Button black glow onClick={addTrans}>
-            <i className="fas fa-plus"></i> Add Transaction
-          </Button>
         </div>
         <div className={classes.transactions}>
           <div className={classes.columnsDivider}>
@@ -79,7 +77,7 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
             <div></div>
           </div>
           {transList.map((item, index) => {
-            if (!item.isDeleted)
+            if (item.isDeleted)
               return (
                 <TransLine
                   key={index}
@@ -88,6 +86,7 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
                   data={item}
                   getDetail={getDetail}
                   onDelete={deleteTrans}
+                  isDeleted={true}
                 />
               );
           })}
@@ -96,10 +95,11 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
 
       {deleteOn && (
         <ConfirmModal
-          message="Do You Want To Delete This Transaction ?"
-          confirmText="Confirm Delete"
-          confirm={deleteConfirm}
+          message="Do You Want To Restore This Transaction ?"
+          confirmText="Confirm Restore"
+          confirm={restoreConfirm}
           close={closeDeleteModal}
+          confirmPrimary
         />
       )}
 

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import classes from "./home.module.css";
-import Card from "../../components/UI/Cards/Card";
-import { useGetState } from "../../context/AppContext";
-import BackDrop from "../../components/UI/BackDrop/BackDrop";
-import Modal from "../../components/UI/Modal/AddJournalModal";
+import Card from "/components/UI/Cards/Card";
+import { useGetState } from "/context/AppContext";
+import BackDrop from "/components/UI/BackDrop/BackDrop";
+import Modal from "/components/UI/Modal/AddJournalModal";
 import mongoose from "mongoose";
-import Journal from "../../models/accounting/Journal";
-import { useUpdateState } from "../../context/AppContext";
-import { sortJournals } from "../../utilities/algorithm_helper";
-import Loader from "../../components/UI/Loader/Loader";
+import Journal from "/models/accounting/Journal";
+import { useUpdateState } from "/context/AppContext";
+import { sortJournals } from "/utilities/algorithm_helper";
+import Loader from "/components/UI/Loader/Loader";
 import { useRouter } from "next/router";
+import Button from "/components/UI/Button/Button";
+import Title from "../../../components/UI/Typography/Title";
 
 const Home = (props) => {
   const { setJournalOnFetch } = useUpdateState();
@@ -38,12 +40,22 @@ const Home = (props) => {
 
   return (
     <div className={classes.container}>
-      <h3 className={classes.title}>Transaction Journals By Month</h3>
+      <Title fontSize="1.5rem" marginTop="50px">
+        ONTHECARD Canada's
+      </Title>
+      <Title fontSize="1.5rem" marginTop="5px">
+        Transaction Journals By Month
+      </Title>
+      <div className={classes.btnHome}>
+        <Button glow black onClick={() => router.push("/dashboard")}>
+          Return To Dashboard
+        </Button>
+      </div>
       <div className={classes.cardsContainer}>
         <Card add onClick={addMonth} />
         {journalArray.map((item, index) => {
           const cardClicked = () =>
-            router.push(`/accounting/journal/${item.journalID}`);
+            router.push(`/ca/accounting/journal/${item.journalID}`);
           return <Card data={item} key={index} onClick={cardClicked} />;
         })}
       </div>

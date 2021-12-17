@@ -17,8 +17,8 @@
   color: black;
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
 }
 
 .ldsSpinner div {
@@ -30,10 +30,10 @@
   content: " ";
   display: block;
   position: absolute;
-  top: 3px;
+  top: 5px;
   left: 37px;
   width: 6px;
-  height: 18px;
+  height: 15px;
   border-radius: 20%;
   background: #fff;
 }

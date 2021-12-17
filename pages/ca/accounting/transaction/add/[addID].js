@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import mongoose from "mongoose";
-import Journal from "../../../../models/accounting/Journal";
-import AddTransactionContain from "./../../../../container/Accounting/AddTransaction/AddTransaction";
-import Loader from "../../../../components/UI/Loader/Loader";
-import ConfirmModal from "../../../../components/UI/Modal/ResultModal";
-import BackDrop from "../../../../components/UI/BackDrop/BackDrop";
+import Journal from "/models/accounting/Journal";
+import AddTransactionContain from "/container/Accounting/AddTransaction/AddTransaction";
+import Loader from "/components/UI/Loader/Loader";
+import ConfirmModal from "/components/UI/Modal/ResultModal";
+import BackDrop from "/components/UI/BackDrop/BackDrop";
 
-import { validateAddTrans } from "../../../../utilities/validator";
-import { addTransAxios } from "../../../../utilities/api_helper/api_helper";
+import { validateAddTrans } from "/utilities/validator";
+import { addTransAxios } from "/utilities/api_helper/api_helper";
 import { useRouter } from "next/router";
 
 const AddTransaction = (props) => {
@@ -35,11 +35,15 @@ const AddTransaction = (props) => {
   };
 
   const confirmAdded = () =>
-    router.push(`/accounting/journal/${router.query.addID}`);
+    router.push(`/ca/accounting/journal/${router.query.addID}`);
 
   return (
     <div>
-      <AddTransactionContain data={propsData} buttonClicked={addTransaction} />
+      <AddTransactionContain
+        returnClick={confirmAdded}
+        data={propsData}
+        buttonClicked={addTransaction}
+      />
       {loading && <Loader />}
       {showResult && (
         <ConfirmModal

@@ -1,0 +1,29 @@
+.messageContainer {
+  position: relative;
+  background-color: #e6b6b4;
+  height: auto;
+  border: 1px solid rgb(184, 18, 18);
+  border-radius: 8px;
+  padding: 0px 15px;
+}
+
+.messageContainer h3 {
+  color: brown;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.messageContainerSuccess {
+  position: relative;
+  background-color: #b6ddb6;
+  height: auto;
+  padding: 0.5vh;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+.messageContainerSuccess h3 {
+  color: green;
+  font-size: 0.9rem;
+  text-align: center;
+}

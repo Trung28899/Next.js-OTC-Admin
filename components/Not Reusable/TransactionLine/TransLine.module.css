@@ -83,3 +83,8 @@
   background-color: var(--dangerBetween);
   color: black;
 }
+
+.btnRestore {
+  background-color: var(--successLight);
+  color: var(--successDark);
+}

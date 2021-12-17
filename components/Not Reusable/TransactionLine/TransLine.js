@@ -1,13 +1,12 @@
 import React from "react";
 import classes from "./TransLine.module.css";
 import { useUpdateState } from "../../../context/AppContext";
-import { useRouter } from "next/router";
 
 const TransLine = (props) => {
   const { setTransData } = useUpdateState();
-  const router = useRouter();
 
-  const { month, year, data } = props;
+  const { month, year, data, onDelete } = props;
+  const { getDetail, isDeleted } = props;
   const containerClass = [classes.container];
   let sign = "";
 
@@ -19,8 +18,17 @@ const TransLine = (props) => {
 
   const detailPage = () => {
     setTransData({ month: month, year: year, ...data });
-    return router.push(`/accounting/transaction/details/${data.transID}`);
+    return getDetail(data.transID);
   };
+
+  const deleteTransaction = () => {
+    return onDelete(data);
+  };
+
+  const iconStyle = [classes.btn];
+
+  if (isDeleted) iconStyle.push(classes.btnRestore);
+  if (!isDeleted) iconStyle.push(classes.btnDelete);
 
   return (
     <div className={containerClass.join(" ")}>
@@ -43,8 +51,12 @@ const TransLine = (props) => {
         >
           <i className="fas fa-info-circle"></i> Details
         </div>
-        <div className={[classes.btn, classes.btnDelete].join(" ")}>
-          <i className="fas fa-trash"></i>
+        <div className={iconStyle.join(" ")} onClick={deleteTransaction}>
+          {isDeleted ? (
+            <i className="fas fa-undo"></i>
+          ) : (
+            <i className="fas fa-trash"></i>
+          )}
         </div>
       </div>
     </div>

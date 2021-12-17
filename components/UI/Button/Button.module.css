@@ -37,6 +37,15 @@
   color: var(--warningDark);
 }
 
+.red {
+  background-color: var(--danger);
+  color: white;
+}
+
 .button:hover {
   opacity: 0.75;
+}
+
+.borderWhite {
+  border: 1px solid var(--faded);
 }

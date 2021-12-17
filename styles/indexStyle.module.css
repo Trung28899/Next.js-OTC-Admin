@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+.bgImg {
+  opacity: 0.5;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loginForm {
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.badgeContainer {
+  position: relative;
+  width: 300px;
+}

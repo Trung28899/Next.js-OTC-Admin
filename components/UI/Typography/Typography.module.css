@@ -36,6 +36,10 @@
   color: var(--successDark);
 }
 
+.white {
+  color: whitesmoke;
+}
+
 .bgSuccess {
   color: var(--successDark);
   background-color: var(--successLight);

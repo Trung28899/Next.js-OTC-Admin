@@ -27,4 +27,15 @@ const updateTransAxios = async (data) => {
   return res.data;
 };
 
+// Used in ./container/Accounting/Journal/TransactionList.js
+const deleteTransAxios = async (data, deleteAction) => {
+  const res = await axios.post("/api/accounting/deleteTrans", {
+    transData: data,
+    deleteAction: deleteAction,
+  });
+
+  return res.data;
+};
+
 export { addJournalAxios, addTransAxios, updateTransAxios };
+export { deleteTransAxios };

@@ -28,7 +28,8 @@ const getMonthShort = (month) => {
 const getTotalIncome = (transList) => {
   let income = 0;
   transList.map((item) => {
-    if (item.transType === "Income") income = income + item.amount;
+    if (item.transType === "Income" && !item.isDeleted)
+      income = income + item.amount;
   });
 
   return income;
@@ -37,7 +38,8 @@ const getTotalIncome = (transList) => {
 const getTotalExpense = (transList) => {
   let expense = 0;
   transList.map((item) => {
-    if (item.transType === "Expense") expense = expense + item.amount;
+    if (item.transType === "Expense" && !item.isDeleted)
+      expense = expense + item.amount;
   });
 
   return expense;

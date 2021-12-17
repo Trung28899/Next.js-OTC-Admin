@@ -12,7 +12,7 @@ import { departments } from "../../../utilities/helper";
 
 const AddTransactionContain = (props) => {
   const { name, journalID } = props.data;
-  const { buttonClicked } = props;
+  const { buttonClicked, returnClick } = props;
 
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(null);
@@ -111,8 +111,11 @@ const AddTransactionContain = (props) => {
       />
 
       <div className={classes.btnContainer}>
-        <Button glow black onClick={addTrans}>
+        <Button glow blue onClick={addTrans}>
           Add Transaction
+        </Button>
+        <Button glow black onClick={returnClick} marginLeft="15px">
+          Return
         </Button>
       </div>
     </AreaBorder>

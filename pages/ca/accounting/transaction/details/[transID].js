@@ -10,7 +10,7 @@ import BackDrop from "/components/UI/BackDrop/BackDrop";
 import Loader from "/components/UI/Loader/Loader";
 
 const TransID = () => {
-  const { accountingData } = useGetState();
+  const { accountingData, admin } = useGetState();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -18,10 +18,10 @@ const TransID = () => {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
 
-  const data = accountingData.transData;
+  const currentData = accountingData.transData;
 
   const returnToJournal = () =>
-    router.push(`/ca/accounting/journal/${data.journalID}`);
+    router.push(`/ca/accounting/journal/${currentData.journalID}`);
 
   const viewInvoice = (invoiceLink) => {
     if (invoiceLink.includes("http")) return window.open(invoiceLink);
@@ -35,7 +35,7 @@ const TransID = () => {
     if (errorText) return alert(errorText);
 
     setLoading(true);
-    const result = await updateTransAxios(data);
+    const result = await updateTransAxios(data, currentData, admin);
     setSuccess(result.success);
     if (result.success) setMessage("Transaction Updated Successfully !!");
     if (!result.success) setMessage(result.message);
@@ -47,7 +47,7 @@ const TransID = () => {
   return (
     <div>
       <TransDetails
-        data={data}
+        data={currentData}
         btnClicked={returnToJournal}
         btn2Clicked={viewInvoice}
         updateDetails={updateDetails}

@@ -11,8 +11,11 @@ import ResultModal from "/components/UI/Modal/ResultModal";
 import BackDrop from "/components/UI/BackDrop/BackDrop";
 import Loader from "/components/UI/Loader/Loader";
 import { deleteTransAxios } from "/utilities/api_helper/api_helper";
+import { useGetState } from "../../../context/AppContext";
 
 const Transactionlist = ({ journalID, transList, month, year }) => {
+  const { admin } = useGetState();
+
   const [deleteOn, setDeleteOn] = useState(false);
   const [transData, setTransData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -39,7 +42,7 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
     setDeleteOn(false);
     setLoading(true);
 
-    const result = await deleteTransAxios(transData, true);
+    const result = await deleteTransAxios(transData, true, admin);
 
     setDeleteSuccess(result.success);
     if (result.success) setDeleteMessage("Transaction Delete Successfully !!");

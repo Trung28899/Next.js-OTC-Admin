@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { AppProvider } from "../context/AppContext";
 import Head from "next/head";
+import CheckSignIn from "../container/CheckSignIn";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }) {
           crossOrigin="anonymous"
         />
       </Head>
+      <CheckSignIn />
       <Component {...pageProps} />
     </AppProvider>
   );

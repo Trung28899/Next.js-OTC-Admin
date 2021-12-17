@@ -9,10 +9,12 @@ import BackDrop from "/components/UI/BackDrop/BackDrop";
 import { validateAddTrans } from "/utilities/validator";
 import { addTransAxios } from "/utilities/api_helper/api_helper";
 import { useRouter } from "next/router";
+import { useGetState } from "../../../../../context/AppContext";
 
 const AddTransaction = (props) => {
-  const router = useRouter();
   const propsData = JSON.parse(props.journalDetails);
+  const router = useRouter();
+  const { admin } = useGetState();
 
   const [loading, setLoading] = useState(false);
   const [showResult, setShowResult] = useState(false);
@@ -24,7 +26,7 @@ const AddTransaction = (props) => {
     if (errorText) return alert(errorText);
 
     setLoading(true);
-    const result = await addTransAxios(data);
+    const result = await addTransAxios(data, admin);
 
     setSuccess(result.success);
     if (result.success) setMessage("Transaction Added Successfully !!");
@@ -36,6 +38,8 @@ const AddTransaction = (props) => {
 
   const confirmAdded = () =>
     router.push(`/ca/accounting/journal/${router.query.addID}`);
+
+  const closeError = () => setShowResult(false);
 
   return (
     <div>
@@ -51,6 +55,7 @@ const AddTransaction = (props) => {
           message={message}
           confirm={confirmAdded}
           confirmText="Return To Journal"
+          close={closeError}
         />
       )}
       {showResult && <BackDrop show />}

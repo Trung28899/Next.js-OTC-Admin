@@ -1,13 +1,11 @@
 import mongoose from "mongoose";
 
-const accountingLogSchema = mongoose.Schema({
+const transactionLogSchema = mongoose.Schema({
   logID: { type: Number, default: 0 },
   logType: { type: String, default: "" },
   transID: { type: Number, default: 0 },
-  perfomedBy: {
-    userName: { type: String, default: "" },
-    fullName: { type: String, default: "" },
-  },
+  userName: { type: String, default: "" },
+  fullName: { type: String, default: "" },
   previousTransData: {
     description: { type: String, default: "" },
     amount: { type: Number, default: 0 },
@@ -28,8 +26,8 @@ const accountingLogSchema = mongoose.Schema({
   },
 });
 
-const AccountingLog =
-  mongoose.models.accountingLog ||
-  mongoose.model("accountingLog", accountingLogSchema);
+const TransactionLog =
+  mongoose.models.transactionLog ||
+  mongoose.model("transactionLog", transactionLogSchema);
 
-export default AccountingLog;
+export default TransactionLog;

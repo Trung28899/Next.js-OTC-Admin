@@ -55,3 +55,15 @@
                 a new model with all the same schema
             This issue happened due to next.js re-build model when it got
                 reload after a file is saved
+
+    e. Next-JS Deployment on Firebase:
+        - See this video to know how to set up and deploy a next.js
+            project to Firebase from scratch:
+        https://www.youtube.com/watch?v=PXqXOxr-LMg&t=371s&ab_channel=M27Lab
+
+        Git hub link to guide:
+        https://github.com/milon27/next-js-portfolio
+
+        - After initial deployment > run the following commands to push a new update:
+            $ npm run build
+            $ npm run deploy

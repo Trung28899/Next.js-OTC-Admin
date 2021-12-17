@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import Journal from "/models/accounting/Journal";
 import { useUpdateState } from "/context/AppContext";
 import { sortJournals } from "/utilities/algorithm_helper";
+import { isTrung } from "/utilities/helper2";
 import Loader from "/components/UI/Loader/Loader";
 import { useRouter } from "next/router";
 import Button from "/components/UI/Button/Button";
@@ -15,7 +16,7 @@ import Title from "../../../components/UI/Typography/Title";
 
 const Home = (props) => {
   const { setJournalOnFetch } = useUpdateState();
-  const { accountingData } = useGetState();
+  const { accountingData, admin } = useGetState();
   const { journalArray } = accountingData;
   const router = useRouter();
 
@@ -29,6 +30,11 @@ const Home = (props) => {
 
   const closeModal = () => setModalOpen(false);
 
+  const seeOverallReport = () => {
+    setLoading(true);
+    return router.push("/ca/accounting/overall");
+  };
+
   useEffect(() => {
     if (!journalArrayOk) {
       const allJournals = sortJournals(JSON.parse(props.allJournals));
@@ -36,12 +42,12 @@ const Home = (props) => {
       setJournalOnFetch(allJournals);
       setJournalArrayOk(true);
     }
-  }, [journalArrayOk]);
+  }, [journalArrayOk, props.allJournals, setJournalOnFetch]);
 
   return (
     <div className={classes.container}>
       <Title fontSize="1.5rem" marginTop="50px">
-        ONTHECARD Canada's
+        ONTHECARD Canada&apos;s
       </Title>
       <Title fontSize="1.5rem" marginTop="5px">
         Transaction Journals By Month
@@ -50,12 +56,17 @@ const Home = (props) => {
         <Button glow black onClick={() => router.push("/dashboard")}>
           Return To Dashboard
         </Button>
+        <Button marginLeft="10px" glow green onClick={seeOverallReport}>
+          Overall Reports
+        </Button>
       </div>
       <div className={classes.cardsContainer}>
-        <Card add onClick={addMonth} />
+        {isTrung(admin) && <Card add onClick={addMonth} />}
         {journalArray.map((item, index) => {
-          const cardClicked = () =>
-            router.push(`/ca/accounting/journal/${item.journalID}`);
+          const cardClicked = () => {
+            setLoading(true);
+            return router.push(`/ca/accounting/journal/${item.journalID}`);
+          };
           return <Card data={item} key={index} onClick={cardClicked} />;
         })}
       </div>

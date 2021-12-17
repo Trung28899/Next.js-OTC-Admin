@@ -32,6 +32,11 @@
   color: white;
 }
 
+.green {
+  background-color: var(--successDark);
+  color: white;
+}
+
 .warning {
   background-color: var(--warningLight);
   color: var(--warningDark);

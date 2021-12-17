@@ -25,8 +25,10 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
   const [resultConfirm, setResultConfirm] = useState(false);
 
   const router = useRouter();
-  const addTrans = () =>
-    router.push(`/ca/accounting/transaction/add/${journalID}`);
+  const addTrans = () => {
+    setLoading(true);
+    return router.push(`/ca/accounting/transaction/add/${journalID}`);
+  };
 
   const deleteTrans = (data) => {
     setTransData(data);
@@ -36,6 +38,10 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
   const closeDeleteModal = () => {
     setTransData(null);
     setDeleteOn(false);
+  };
+
+  const closeConfirm = () => {
+    setResultConfirm(false);
   };
 
   const deleteConfirm = async () => {
@@ -112,6 +118,7 @@ const Transactionlist = ({ journalID, transList, month, year }) => {
           message={deleteMessage}
           confirmText="Return To Journal"
           confirm={confirmDelete}
+          close={closeConfirm}
         />
       )}
 

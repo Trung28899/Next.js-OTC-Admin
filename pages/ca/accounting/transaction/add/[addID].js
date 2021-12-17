@@ -36,8 +36,10 @@ const AddTransaction = (props) => {
     return setLoading(false);
   };
 
-  const confirmAdded = () =>
+  const confirmAdded = () => {
+    setLoading(true);
     router.push(`/ca/accounting/journal/${router.query.addID}`);
+  };
 
   const closeError = () => setShowResult(false);
 

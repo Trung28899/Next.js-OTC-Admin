@@ -53,7 +53,7 @@ export default function Home() {
       <img className={classes.bgImg} src="/image.jpeg" alt="" />
       <div className={classes.container}>
         <Title white fontSize="1.5rem">
-          Welcome To ONTHECARD's
+          Welcome To ONTHECARD&apos;s
         </Title>
         <Title white fontSize="1.5rem">
           Administrative Portal

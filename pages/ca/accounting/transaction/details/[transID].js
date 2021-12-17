@@ -20,15 +20,19 @@ const TransID = () => {
 
   const currentData = accountingData.transData;
 
-  const returnToJournal = () =>
-    router.push(`/ca/accounting/journal/${currentData.journalID}`);
+  const returnToJournal = () => {
+    setLoading(true);
+    return router.push(`/ca/accounting/journal/${currentData.journalID}`);
+  };
 
   const viewInvoice = (invoiceLink) => {
     if (invoiceLink.includes("http")) return window.open(invoiceLink);
     return;
   };
 
-  const close = () => setShowResult(false);
+  const close = () => {
+    setShowResult(false);
+  };
 
   const updateDetails = async (data) => {
     const errorText = validateUpdateTrans(data);

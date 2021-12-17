@@ -84,6 +84,7 @@ const departments = [
   "Legal",
   "R&D",
   "Marketing",
+  "Funding",
   "Finance",
   "Human Resource",
 ];

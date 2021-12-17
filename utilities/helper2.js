@@ -56,5 +56,11 @@ const getDateByMillisecond = (millisecond) => {
   };
 };
 
-export { sortTransaction, getMonthShort };
+// Some Premium Function For Trung
+const isTrung = (admin) => {
+  if (admin.userName.toLowerCase().includes("trungtrinh")) return true;
+  return false;
+};
+
+export { sortTransaction, getMonthShort, isTrung };
 export { getTotalIncome, getTotalExpense, getDateByMillisecond };

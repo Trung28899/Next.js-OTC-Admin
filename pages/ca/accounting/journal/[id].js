@@ -12,8 +12,12 @@ import Button from "/components/UI/Button/Button";
 import Loader from "../../../../components/UI/Loader/Loader";
 
 import { sortTransaction, getMonthShort } from "/utilities/helper2";
+import { getExpensesCategory, getIncomeCategory } from "/utilities/helper2";
 import { allTransToExcel } from "../../../../utilities/excelHelper";
 import { useRouter } from "next/router";
+
+import ExpenseReport from "/container/Accounting/ChartArea/ExpenseReport";
+import IncomeReport from "/container/Accounting/ChartArea/IncomeReport";
 
 const Id = (props) => {
   const router = useRouter();
@@ -21,6 +25,9 @@ const Id = (props) => {
   const transList = JSON.parse(props.transactionList);
   sortTransaction(transList);
   const monthShort = getMonthShort(month);
+
+  const expenseData = getExpensesCategory(transList);
+  const incomeData = getIncomeCategory(transList);
 
   const [loading, setLoading] = useState(false);
 
@@ -46,6 +53,7 @@ const Id = (props) => {
           <i className="fas fa-file-excel"></i> Export Transactions
         </Button>
       </div>
+
       <div className={classes.detailContainer}>
         <Transactionlist
           month={monthShort}
@@ -55,6 +63,21 @@ const Id = (props) => {
         />
         <SummaryReport transList={transList} />
       </div>
+
+      {expenseData.length > 0 && (
+        <ExpenseReport
+          title={"Monthly Expenses By Department Report"}
+          expenseData={expenseData}
+        />
+      )}
+
+      {incomeData.length > 0 && (
+        <IncomeReport
+          title={"Monthly Income By Department Report"}
+          incomeData={incomeData}
+        />
+      )}
+
       <div className={classes.deleteContainer}>
         <DeletedTransList
           month={monthShort}

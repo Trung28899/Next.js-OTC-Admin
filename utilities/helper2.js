@@ -1,4 +1,4 @@
-import { dayInMonth, monthArray } from "./helper";
+import { dayInMonth, departments, monthArray } from "./helper";
 
 // sort transactions by date, used in ./pages/accounting/journal/[id].js
 const sortTransaction = (transArray) => {
@@ -62,5 +62,59 @@ const isTrung = (admin) => {
   return false;
 };
 
-export { sortTransaction, getMonthShort, isTrung };
-export { getTotalIncome, getTotalExpense, getDateByMillisecond };
+// Get expenses data by department to render on chart
+// Used in /pages/ca/accounting/overall
+const getExpensesCategory = (transList) => {
+  let departmentList = [];
+  let dataObject = [];
+
+  for (let i = 0; i < transList.length; i++) {
+    const { transType, department, amount, isDeleted } = transList[i];
+
+    if (transType !== "Expense" || isDeleted) continue;
+
+    if (departmentList.indexOf(department) === -1) {
+      dataObject.push({ name: department, expense: amount });
+      departmentList.push(department);
+    } else {
+      const newData = {
+        name: department,
+        expense:
+          dataObject[departmentList.indexOf(department)].expense + amount,
+      };
+      dataObject[departmentList.indexOf(department)] = newData;
+    }
+  }
+
+  return dataObject;
+};
+
+// Get income data by department to render on chart
+// Used in /pages/ca/accounting/overall
+const getIncomeCategory = (transList) => {
+  let departmentList = [];
+  let dataObject = [];
+
+  for (let i = 0; i < transList.length; i++) {
+    const { transType, department, amount, isDeleted } = transList[i];
+
+    if (transType !== "Income" || isDeleted) continue;
+
+    if (departmentList.indexOf(department) === -1) {
+      dataObject.push({ name: department, income: amount });
+      departmentList.push(department);
+    } else {
+      const newData = {
+        name: department,
+        income: dataObject[departmentList.indexOf(department)].income + amount,
+      };
+      dataObject[departmentList.indexOf(department)] = newData;
+    }
+  }
+
+  return dataObject;
+};
+
+export { sortTransaction, getMonthShort, isTrung, getExpensesCategory };
+export { getDateByMillisecond, getIncomeCategory };
+export { getTotalIncome, getTotalExpense };

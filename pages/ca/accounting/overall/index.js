@@ -7,12 +7,21 @@ import Alltime from "../../../../container/Accounting/AllTimeSummary/AllTime";
 import Loader from "../../../../components/UI/Loader/Loader";
 
 import Transaction from "../../../../models/accounting/Transaction";
+import ExpenseByDepartment from "../../../../components/Not Reusable/Charts/BarChart/ExpenseByDepartment";
+
+import ExpenseReport from "/container/Accounting/ChartArea/ExpenseReport";
+import IncomeReport from "/container/Accounting/ChartArea/IncomeReport";
+
+import { getExpensesCategory, getIncomeCategory } from "/utilities/helper2";
 import { useRouter } from "next/router";
 import { allTransToExcel } from "../../../../utilities/excelHelper";
+import { Colors } from "/constants/colors";
 
 const OverallReport = (props) => {
   const router = useRouter();
   const allTrans = JSON.parse(props.allTrans);
+  const expenseData = getExpensesCategory(allTrans);
+  const incomeData = getIncomeCategory(allTrans);
 
   const [loading, setLoading] = useState(false);
 
@@ -42,6 +51,19 @@ const OverallReport = (props) => {
         </Button>
       </div>
       <Alltime allTrans={allTrans} />
+      {expenseData.length > 0 && (
+        <ExpenseReport
+          title={"All Time Expenses By Department Report"}
+          expenseData={expenseData}
+        />
+      )}
+
+      {incomeData.length > 0 && (
+        <IncomeReport
+          title={"All Time Income By Department Report"}
+          incomeData={incomeData}
+        />
+      )}
       {loading && <Loader />}
     </div>
   );

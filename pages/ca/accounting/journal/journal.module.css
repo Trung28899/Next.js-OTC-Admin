@@ -21,6 +21,11 @@
   text-align: center;
 }
 
+.chartsContainer {
+  display: flex;
+  width: fit-content;
+}
+
 @media screen and (max-width: 1300px) {
   .detailContainer {
     grid-template-columns: 100%;

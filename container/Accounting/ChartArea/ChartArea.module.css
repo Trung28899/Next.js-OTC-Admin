@@ -1,0 +1,4 @@
+.chartsContainer {
+  display: flex;
+  width: fit-content;
+}

@@ -67,3 +67,10 @@
         - After initial deployment > run the following commands to push a new update:
             $ npm run build
             $ npm run deploy
+
+    f. Accounting App Improvements:
+        - Formatt Numbers
+        - Asset Option
+        - All time transactions arrange correctly
+        - Showing Logs for Each Transaction
+        - Responsiveness
